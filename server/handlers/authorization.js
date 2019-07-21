@@ -1,23 +1,19 @@
-const departament_schema = require("../connectors/departaments_schema.js");
+const student_schema = require("../connectors/student_schema.js");
 
 exports.init = app => app.use(async (ctx, next) => 
 {
     if(ctx.query.oper == "auth")
     {
-        ctx.departament = await new Promise( async (resolve) =>
+        ctx.student = await new Promise( async (resolve) =>
         {
-            let docs = await departament_schema.getDepartament(ctx.query.dep)
+            let docs = await student_schema.getStudent(ctx.query.lg)
             resolve(docs[0])
-        }) 
-        ctx.user = null;
-        ctx.departament.users.forEach( (item) =>
-        {
-            if(ctx.query.lg === item.login) ctx.user = item; 
         })
-
-        if(ctx.query.lg && ctx.query.ps && ctx.user && ctx.user.ps == ctx.query.ps)
+        if(ctx.query.lg && ctx.query.ps && ctx.student.ps == ctx.query.ps)
         {
-            ctx.session.user = ctx.user;
+            ctx.session.student = ctx.student.login;
+            delete ctx.student.ps;
+            ctx.student.st = "ok";
             await next();
         } else
         {
@@ -25,9 +21,8 @@ exports.init = app => app.use(async (ctx, next) =>
         }
     } else 
     {
-        console.log("SESSION");
-        ctx.user = ctx.session.user || {er: 401};
+        ctx.student = ctx.session.student || {er: 401};
+        ctx.student.st = "ok";
         await next();
-        return false;
     }
 });

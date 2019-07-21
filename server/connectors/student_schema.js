@@ -4,26 +4,26 @@ mongoose.set("debug", true);
 mongoose.connect(config.DATABASE_ADRESS, {useNewUrlParser: true});
 
 
-class DEPARTAMENT_SCHEMA
+class STUDENT_SCHEMA
 {
     constructor()
     {
         this.schema = new mongoose.Schema(
-        config.DEPARTAMENT_SCHEMA,
+        config.STUDENT_SCHEMA,
         {
             timestamps: true
         });
-        this.DEPARTAMENT_Model = mongoose.model(config.DEPARTAMENTS_MODEL, this.schema);
+        this.STUDENT_Model = mongoose.model(config.STUDENT_MODEL, this.schema);
     };
-    getDepartament = async (dep) =>
+    getStudent = async (lg) =>
     {
         let docs = await new Promise(
             (resolve, reject) =>
             {
-                this.DEPARTAMENT_Model.find
+                this.STUDENT_Model.find
                 (
                     {
-                        name: dep
+                      //  login: lg
                     },
                     (err, doc) =>
                     {
@@ -38,13 +38,13 @@ class DEPARTAMENT_SCHEMA
         );
         return docs;
     };
-    updateDEPARTAMENT = async (id, props, res) =>
+    updateStudent = async (id, props, res) =>
     {
-        await this.DEPARTAMENT_Model.updateOne({_id: id}, {$set: props});
+        await this.STUDENT_Model.updateOne({_id: id}, {$set: props});
         res();
     };
 };
 
 
-let departament_schema = new DEPARTAMENT_SCHEMA();
-module.exports = departament_schema;
+let student_schema = new STUDENT_SCHEMA();
+module.exports = student_schema;
