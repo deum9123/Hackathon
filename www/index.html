@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html class="no-js" lang="ru">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+    <title>Product</title>
+    <meta name="description" content="">
+    <link rel="stylesheet" href="./css/bootstrap/bootstrap.css">
+    <link rel="stylesheet" href="./css/main.css">
+    <link rel="icon" href="./img/favicon.png">
+  </head>
+  <body>
+      <section id = "auth">
+          <div class="container container_auth">
+            <div></div>
+            <img class = "auth_logo" src="img/8-1.png" />
+              <div class="sign-up" id = "auth_form">
+                <div class="form-group">
+                  <input id = "auth_login" class="form-control form-control--person" placeholder="Имя пользователя">
+                </div>
+                <div class="form-group">
+                  <input id = "auth_ps" class="form-control form-control--key" placeholder="Пароль">
+                </div>
+                <div class="form-group centertext">
+                  <button class="btn btn--light-blue-grad" id = "auth_btn">Войти</button>
+                </div>
+              </div>
+              <div></div>
+            </div>
+      </section>
+    <div class="wrapper app">
+      
+      <div class="header" id="header">
+        <div class="header__search"></div>
+        <div class="header__friends"></div>
+        <div class="header__space"></div>
+        <div class="header__menu"></div>
+      </div>
+      <section class="s-chat-users">
+        <div class="user-header d-grid"><img id = "logo_header" class="user-header__photo img-fluid" src="img/photo-big.jpg" alt="">
+          <h2 class="user-header__name"><span id = "fioWrapper"><span id = "fio"></span><span id = "login">Klumi</span><span></span></span> <span id = "showInformation">показать информацию</span></h2>
+        </div>
+        <div class="user-bar-code">
+              <div id = "closeFioWrapper"><span style = "margin-top: -2vh">СКРЫТЬ</span></div>
+              <div class = "skillsWrapper">
+                <div class = "skillsLine">
+                      <div id = "skiilplace_email">Email</div>
+                      <div id = "skiilplace_email_value" class = "table_value">Klumi</div>
+                      <div id = "skiilplace_email_edit" class = "table_edit">del</div>
+                </div>
+              </div>
+        </div>
+        <div class="user-chat-list">
+              <div class="user-chat-list__item mb-3 d-grid"><img class="user-chat-list__photo" src="img/photo-small.jpg"><span class="user-chat-list__name">Иванов Иван Иванович</span></div>
+        </div>
+      </section>
+    </div>
+    <script src="./js/jquery-3.3.1.min.js"></script>
+    <script src="./js/utils/handlers.js"></script>
+    <script src="./js/renders/eventsRender.js"></script>
+    <script src="./js/renders/personalDataRender.js"></script>
+    <script src="./js/utils/loader.js"></script>
+    <script src="./js/parsers/accountParser.js"></script>
+    <script src="./js/App.js"></script>
+  </body>
+</html>
